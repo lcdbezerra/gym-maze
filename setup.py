@@ -9,5 +9,5 @@ setup(name="gym_maze",
       package_data = {
           "gym_maze.envs": ["maze_samples/*.npy"]
       },
-      install_requires = ["gym", "pygame", "numpy"]
+      install_requires = ["gym==0.23.1", "pygame", "numpy==1.26.1"]
 )
