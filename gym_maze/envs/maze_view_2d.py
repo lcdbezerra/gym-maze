@@ -2,6 +2,7 @@ import pygame
 import random
 import numpy as np
 import os
+import pickle
 
 
 class MazeView2D:
@@ -28,7 +29,11 @@ class MazeView2D:
                     maze_file_path = rel_path
                 else:
                     raise FileExistsError("Cannot find %s." % maze_file_path)
-            self.__maze = Maze(maze_cells=Maze.load_maze(maze_file_path))
+            if maze_file_path.endswith(".pkl"):
+                with open(maze_file_path, "rb") as f:
+                    self.__maze = pickle.load(f)
+            else:
+                self.__maze = Maze(maze_cells=Maze.load_maze(maze_file_path))
 
         self.maze_size = self.__maze.maze_size
         if self.__enable_render is True:
@@ -567,7 +572,8 @@ class Portal:
 
 if __name__ == "__main__":
 
-    maze = MazeView2D(screen_size= (500, 500), maze_size=(10,10))
+    # maze = MazeView2D(screen_size= (500, 500), maze_size=(10,10))
+    maze = MazeView2D(screen_size= (500, 500), maze_size=(10,10), has_loops=True, num_portals=3)
     maze.update()
     input("Enter any key to quit.")
 

@@ -167,5 +167,12 @@ class MazeEnvRandom20x20Plus(MazeEnv):
 
 
 class MazeEnvRandom30x30Plus(MazeEnv):
+    
     def __init__(self, enable_render=True):
         super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode="plus", enable_render=enable_render)
+
+
+class MazeEnvSample10x10Plus(MazeEnv):
+
+    def __init__(self, enable_render=True):
+        super(MazeEnvSample10x10Plus, self).__init__(maze_file="maze2d_10x10_plus.pkl", enable_render=enable_render)
